@@ -63,7 +63,7 @@ static NSDictionary *_codes = nil;
 
         for (NSString *emoji in _emojis) {
             if (![ignore containsObject:emoji]) {
-                [emojiString replaceOccurrencesOfString:emoji withString:_emojis[emoji] options:NSCaseInsensitiveSearch range:NSMakeRange(0, [emojiString length])];
+                [emojiString replaceOccurrencesOfString:emoji withString:_emojis[emoji] options:(NSCaseInsensitiveSearch | NSLiteralSearch) range:NSMakeRange(0, [emojiString length])];
             }
         }
 
@@ -784,7 +784,7 @@ static NSDictionary *_codes = nil;
 						 @":rotating_light:": @"\U0001F6A8",
 						 @":round_pushpin:": @"\U0001F4CD",
 						 @":rowboat:": @"\U0001F6A3",
-						 @":ru:": [NSString stringWithFormat:@"\U0001F1F7\U0001F1FA"],
+						 @":ru:": @"\U0001F1F7\U0001F1FA",
 						 @":rugby_football:": @"\U0001F3C9",
 						 @":runner:": @"\U0001F3C3",
 						 @":running:": @"\U0001F3C3",
@@ -958,7 +958,7 @@ static NSDictionary *_codes = nil;
 						 @":underage:": @"\U0001F51E",
 						 @":unlock:": @"\U0001F513",
 						 @":up:": @"\U0001F199",
-						 @":us:": [NSString stringWithFormat:@"\U0001F1FA\U0001F1F8"],
+						 @":us:": @"\U0001F1FA\U0001F1F8",
 						 @":v:": @"\u270C",
 						 @":vertical_traffic_light:": @"\U0001F6A6",
 						 @":vhs:": @"\U0001F4FC",
@@ -1008,7 +1008,52 @@ static NSDictionary *_codes = nil;
 						 @":yum:": @"\U0001F60B",
 						 @":zap:": @"\u26A1",
 						 @":zero:": [NSString stringWithFormat:@"%C%C", (unichar)0x0030, (unichar)0x20E3],
-						 @":zzz:": @"\U0001F4A4"};
+						 @":zzz:": @"\U0001F4A4",
+               
+               // Zero Width Joiner
+               @":zwj:": @"\U0000200D",
+               
+               // Emoji Modifiers
+               @":emoji_modifier_fitzpatrick_type-1-2:": @"\U0001F3FB",
+               @":emoji_modifier_fitzpatrick_type-3:": @"\U0001F3FC",
+               @":emoji_modifier_fitzpatrick_type-4:": @"\U0001F3FD",
+               @":emoji_modifier_fitzpatrick_type-5:": @"\U0001F3FE",
+               @":emoji_modifier_fitzpatrick_type-6:": @"\U0001F3FF",
+               
+               // Flags
+               @":au:": @"\U0001F1E6\U0001F1FA",
+               @":at:": @"\U0001F1E6\U0001F1F9",
+               @":be:": @"\U0001F1E7\U0001F1EA",
+               @":br:": @"\U0001F1E7\U0001F1F7",
+               @":ca:": @"\U0001F1E8\U0001F1E6",
+               @":chile:": @"\U0001F1E8\U0001F1F1",
+               @":co:": @"\U0001F1E8\U0001F1F4",
+               @":dk:": @"\U0001F1E9\U0001F1F0",
+               @":fi:": @"\U0001F1EB\U0001F1EE",
+               @":hk:": @"\U0001F1ED\U0001F1F0",
+               @":in:": @"\U0001F1EE\U0001F1F3",
+               @":indonesia:": @"\U0001F1EE\U0001F1E9",
+               @":ie:": @"\U0001F1EE\U0001F1EA",
+               @":il:": @"\U0001F1EE\U0001F1F1",
+               @":mo:": @"\U0001F1F2\U0001F1F4",
+               @":my:": @"\U0001F1F2\U0001F1FE",
+               @":mx:": @"\U0001F1F2\U0001F1FD",
+               @":nl:": @"\U0001F1F3\U0001F1F1",
+               @":nz:": @"\U0001F1F3\U0001F1FF",
+               @":no:": @"\U0001F1F3\U0001F1F4",
+               @":ph:": @"\U0001F1F5\U0001F1ED",
+               @":pl:": @"\U0001F1F5\U0001F1F1",
+               @":pt:": @"\U0001F1F5\U0001F1F9",
+               @":pr:": @"\U0001F1F5\U0001F1F7",
+               @":saudi_arabia:": @"\U0001F1F8\U0001F1E6",
+               @":sg:": @"\U0001F1F8\U0001F1EC",
+               @":za:": @"\U0001F1FF\U0001F1E6",
+               @":se:": @"\U0001F1F8\U0001F1EA",
+               @":ch:": @"\U0001F1E8\U0001F1ED",
+               @":tr:": @"\U0001F1F9\U0001F1F7",
+               @":ae:": @"\U0001F1E6\U0001F1EA",
+               @":vn:": @"\U0001F1FB\U0001F1F3",
+               };
 	
 	// Build dictionary keyed by unicode representation for easy replacement
 	NSMutableDictionary *emojis = [[NSMutableDictionary alloc] init];
